@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style>
+*{
+    margin:0px;
+    padding:0px;
+}
+.results{
+    display:inline-block;
+    width: 600px;
+    vertical-align: top;
+    padding-left:300px;
+
+}
+.showpost{
+    border: black 1px solid;
+    width: 600px;
+    margin-top:20px;
+}
+.comm{
+   
+    width: 400px; 
+    margin:auto;
+    margin-top:20px;
+}
+.heads{
+    width: 680px; 
+ border-bottom:black 1px solid;
+vertical-align: top;
+display:inline-block;
+height:90px;
+padding:10px 0px 0px 20px;
+}
+#head{
+    text-align: right;
+}
+.postform{
+    color:blue;
+    background-color:lightgray;
+    margin-top:20px;
+    border: lightslategray 2px solid;
+    width:600px;
+    text-align: center;
+
+}
+.poster{
+    color:rgb(63, 61, 61);
+    font-size: 20px;
+    padding-left: 30px;
+    margin-top:30px;
+    border-bottom:black 1px solid;
+}
+#datetime{
+    margin-left:300px;
+}
+.shows{
+    padding-left: 20px;
+    width: 580px
+}
+.comment{
+    border: solid rgb(169, 177, 177) 1px;
+     min-height: 50px;
+    color:dodgerblue;
+    margin-top:20px;
+    padding-left: 20px;
+}
+
+</style>
+<body>
+    <div class="heads" ><h1>DOJO POST Wall</h1></div>
+    <div class="heads" id="head"><b>hello {{result.firstname}}  </b><a href="/logout">logout</a></div>
+    <div class="results">
+ 
+     <form action="/post" method="post" class="postform">
+        {%csrf_token%}
+      <p>Post message</p>
+      <textarea name="post" id="post" cols="77" rows="10"></textarea>
+      <p><button type="submit" class="btn btn-primary">post</button></p> 
+    </form>
+  
+    {% for message in messages%}
+    <div class="showpost">
+       <p class="poster"> {{message.user.firstname}}  <span id="datetime">  {{message.created_at|date:"F dS Y"}} </span></p>
+       <div><div class="shows"> <b>Post:</b>   {{message.message}} 
+           
+        {% if message.user.id == result.id%}
+        <span style="margin-left:400px" > <a href="/delete/{{message.id}}">delete</a></span></div>
+          {%endif%}
+          <div class="comm">
+                <form action="/comment/{{message.id}}" method="post">
+                {%csrf_token%}
+              <textarea name="comment" id="post" cols="50" rows="10"></textarea>
+              <p><button type="submit" class="btn btn-primary">comment</button></p> 
+            </form>
+        
+             {%for comm in message.comments.all  %}
+               <div class="comment"><b style="color:black;">comment:</b> {{comm.comment}}</div>
+                {%endfor%}
+              
+          </div>
+       </div>
+      
+        
+
+
+    </div>
+    {%endfor%}
+    {{commentshows.comment}}
+</div>
+
+</body>
+</html>
