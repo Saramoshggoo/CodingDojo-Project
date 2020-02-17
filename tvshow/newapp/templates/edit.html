@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .shows{
+        margin-left:30px;
+        width: 700px;
+        vertical-align:top;
+        display: inline-block;
+        }
+     
+    
+        </style>
+</head>
+<body>  <div class="shows"> 
+        {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+            {%endif%}
+        <form action = "/edit/{{editable.id}}" method = "post">
+                {%csrf_token%}
+             <p>Title</p>
+            <p><input type="text" name="title" value="{{editable.title}}"></p> 
+             <p>Network</p>      
+             <p><input type="text" name="network" value="{{editable.network}}"></p>
+            <p> release Date</p>
+            <input type="datetime-local" name="release" value="{{editable.release_day|date:'Y-m-d\TH:i'}}"></p>
+             <p>Description</p>
+             <p><textarea name="desc" id="" cols="30" rows="10" value="{{editable.desc}}">{{editable.desc}}</textarea></p>
+             <button type="submit">Update</button>
+            </form></div>
+            <div ><a href="/">go back</a></div>     
+</body>
+</html>

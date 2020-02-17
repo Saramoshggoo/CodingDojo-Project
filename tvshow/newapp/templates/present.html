@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+.shows{
+ margin-left:30px;
+ width: 700px;
+ vertical-align:top;
+ display: inline-block;
+ }
+p{ font-size: 20px;
+}
+.goback{
+    vertical-align:top;
+ display: inline-block; 
+}
+</style>
+<body>
+  <div class="shows">
+    <h1>Show More Detail:</h1>
+    <p><b>Title:</b>{{present.title}} </p>
+    <p><b>Network:</b>{{present.network}}</p>
+    <p><b>Date:</b>{{present.release_day}}</p>
+    <p><b>description:</b>{{present.desc}}</p>
+    <p><b>Last Update:</b>{{present.updated_at}}</p>
+    <a href="/delete/{{present.id}}">Delete</a>
+    <a href="/gotoedit/{{present.id}}">update</a>
+  </div>
+  <div class="goback"><a href="/">go back</a></div>
+
+</body>
+</html>

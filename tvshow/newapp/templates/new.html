@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+.t{
+    width:120px; display: inline-block;vertical-align: top;
+}
+.newform{
+    background-color: lightsteelblue;
+    margin-left: 30px;
+    width: 700px;
+    text-align: center;
+}
+
+</style>
+<body>    
+        {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+        {% endif %}
+    <div class="newform">
+    <h1>create new Show</h1><a style="margin-left: 600px;" href="/">go back</a>
+    <form action = "read" method = "post">
+       {%csrf_token%}
+    <p>Title</p>
+   <p><input type="text" name="title" ></p> 
+   <div class="t">Network     </div>   <div class="t">    release Date</div>  
+    <p><input type="text" name="network" >
+   <input type="datetime-local" name="release" value=""></p>
+    <p>Description</p>
+    <p><textarea name="desc" id="" cols="30" rows="10"></textarea></p>
+    <button type="submit">Create</button>
+   </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+.resulttable{
+    margin:auto;
+    width:900px;
+
+}
+td{
+width: 200px;
+text-align: center;}
+th{
+    background-color: lightslategray;
+}
+
+
+table{
+    background-color: rgb(211, 217, 223);
+    border: solid grey 1px;
+}
+
+</style>
+<body>
+    <div class="resulttable">
+    <h1>Show all</h1>
+    <table>
+     <tr> 
+         <th>ID </th>
+         <th>Title</th>
+         <th>Network</th>
+         <th>Release day</th>
+          <th>Action</th>
+    </tr> 
+  
+    {% for i in result %}
+    <tr>
+   
+        <td>{{i.id}}</td>
+        <td>{{i.title}}</td>
+        <td>{{i.network}}</td>
+         <td>{{i.release_day}}</td>
+         <td><a href="/present/{{i.id}}">Show</a>|<a href="/gotoedit/{{i.id}}">Edit</a>|<a href="/delete/{{i.id}}">Delete</a></td>
+      
+    </tr>
+
+    {% endfor %}
+  
+
+
+    </table>
+    </div>
+    <a href="/new">add new show</a>
+</body>
+</html>
