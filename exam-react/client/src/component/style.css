@@ -1,0 +1,45 @@
+
+.main{
+
+
+  width: 500px;
+  margin:auto;
+  border: black 1px solid;
+  text-align: center;
+  padding-bottom: 30px;
+  border-radius: 10px;
+  margin-top:50px;
+}
+.main td{
+    width:200px;
+}
+.main input{
+   width:200px;
+}
+.bodie{
+   height:900px;
+   margin:0px;
+}
+ h1{
+    margin-left:380px;
+}
+.bodie h4{
+    margin-left:800px;
+}
+.design{
+    width:350px;
+    display: inline-block;
+    vertical-align:top;
+    height:200px;
+    background-color:rgb(194, 194, 240);
+    margin-left:20px;
+    text-align: center;
+    overflow-y:scroll;
+    height:300px;
+}
+.dashboard{
+    margin-top:20px;
+}
+.p_app{
+   margin-left:200px; 
+}
